@@ -4,7 +4,7 @@ export const RepoContainer = styled.div`
   background-color: #31345f;
   padding: 1.5rem;
   width: 80%;
-  height: 10rem;
+  height: 100%;
   display: flex;
   align-items: start;
   justify-content: center;

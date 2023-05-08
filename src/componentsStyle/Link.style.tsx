@@ -9,4 +9,5 @@ export const StyledLink = styled(Link)`
   &:visited {
     color: #a8a8a8;
   }
+
 `
