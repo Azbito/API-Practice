@@ -10,14 +10,6 @@ export function Repo() {
   // Find the repository which is matching with the clicked ID
   const selectedRepo = repo.find((item) => item.full_name === currentRepository);
 
-  // Verify if the context had been already updated with the data
-  useEffect(() => {
-    if (!selectedRepo) {
-      // Make a new request for getting the selected repository
-      // Update the context here, if it is necessary
-    }
-  }, [selectedRepo]);
-
   return (
     <div>
       <h1>{currentRepository}</h1>
