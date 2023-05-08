@@ -1,19 +1,17 @@
-import axios from 'axios';
 import { useContext } from 'react';
-import { useQuery } from 'react-query';
 import { RepoContext } from '../../contexts/RepoContext';
-import { RepoContainer } from '../../components/RepoContainer.style';
-import { StyledLink } from '../../components/Link.style';
-import { RepoMap } from '../../components/RepoMap.style';
-import { RepoName } from '../../components/RepoName.style';
-import { RepoDescription } from '../../components/RepoDescription.style';
-import { Container } from '../../components/Container.style';
-import { Title } from '../../components/Title.style';
+import { RepoContainer } from '../../componentsStyle/RepoContainer.style';
+import { RepoMap } from '../../componentsStyle/RepoMap.style';
+import { RepoName } from '../../componentsStyle/RepoName.style';
+import { RepoDescription } from '../../componentsStyle/RepoDescription.style';
+import { Container } from '../../componentsStyle/Container.style';
+import { Title } from '../../componentsStyle/Title.style';
+import { StyledLink } from '../../componentsStyle/Link.style';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { Repository } from '../../typings/RepoProps';
 
-export type Repository = {
-  full_name: string,
-  description: string
-}
+
 
 export function Repos() {
   const { repo, setRepo } = useContext(RepoContext)
@@ -26,6 +24,7 @@ export function Repos() {
   }, {
     staleTime: 1000 * 60, // 1 minute
   })
+
 
   return (
     <Container>
