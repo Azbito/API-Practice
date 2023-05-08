@@ -1,9 +1,14 @@
-import './styles.css';
 import axios from 'axios';
 import { useContext } from 'react';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
 import { RepoContext } from '../../contexts/RepoContext';
+import { RepoContainer } from '../../components/RepoContainer.style';
+import { StyledLink } from '../../components/Link.style';
+import { RepoMap } from '../../components/RepoMap.style';
+import { RepoName } from '../../components/RepoName.style';
+import { RepoDescription } from '../../components/RepoDescription.style';
+import { Container } from '../../components/Container.style';
+import { Title } from '../../components/Title.style';
 
 export type Repository = {
   full_name: string,
@@ -23,16 +28,21 @@ export function Repos() {
   })
 
   return (
-    <ul>
+    <Container>
       {isFetching && <p>Loading...</p>}
-      {repo?.map((item) => {
-        return (
-          <li key={item.full_name}>
-            <Link to={`repos/${item.full_name}`}>{item.full_name}</Link>
-            {item.description ? <p>{item.description}</p> : <p>There's no description</p>}
-          </li>
-        )
-      })}
-    </ul>
+      <Title>Repositories</Title>
+      <RepoMap>
+        {repo?.map((item) => {
+          return (
+            <StyledLink key={item.full_name} to={`repos/${item.full_name}`}>
+              <RepoContainer>
+                <RepoName>{item.full_name}</RepoName>
+                {item.description ? <RepoDescription>{item.description}</RepoDescription> : <RepoDescription>There's no description</RepoDescription>}
+              </RepoContainer>
+            </StyledLink>
+          )
+        })}
+      </RepoMap>
+    </Container>
   )
 }
