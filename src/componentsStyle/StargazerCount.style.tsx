@@ -1,7 +1,5 @@
 import { styled } from "styled-components";
 
-export const StargazerCount = styled.b`
-  position: absolute;
-  right: 1rem;
-  top: .55rem;
+export const StyledStargazerCount = styled.b`
+margin-top: .2rem;
 `

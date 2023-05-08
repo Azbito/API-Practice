@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const RepoContainer = styled.div`
+export const StyledRepoContainer = styled.div`
   background-color: #31345f;
   padding: 1.5rem;
   width: 80%;
@@ -10,8 +10,8 @@ export const RepoContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   border-radius: 1rem;
-  gap: 1rem;
   transition: .2s;
+  position: relative;
 
   &:hover {
     cursor: pointer;

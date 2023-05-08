@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
 
-export const RepoLang = styled.p`
+export const StyledRepoLang = styled.p`
   font-weight: 400
 `

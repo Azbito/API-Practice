@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
 
-export const StargazerCounter = styled.div`
+export const StyledStargazerCounter = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  background-color: #457c86;
+  background-color: rgb(248, 156, 69);
   color: white;
-  width: 3rem;
-  padding: .5rem;
+  width: auto;
+  padding: .5rem 1rem .5rem 1rem;
   border-radius: 1rem;
-  position: relative;
+  position: absolute;
+  top: -1rem
 `

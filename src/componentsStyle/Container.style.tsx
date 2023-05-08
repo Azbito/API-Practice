@@ -1,9 +1,11 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%
+  height: 100%;
+  margin-top: 5rem;
+  gap: 2rem;
 `

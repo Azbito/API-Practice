@@ -1,4 +1,4 @@
 import { styled } from "styled-components";
 
-export const Title = styled.b`
+export const StyledTitle = styled.b`
 font-size: 1.8rem`
