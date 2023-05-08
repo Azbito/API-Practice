@@ -13,11 +13,10 @@ export type Repository = {
 export function Repos() {
   const { repo, setRepo } = useContext(RepoContext)
 
-  const { data, isFetching } = useQuery<Repository[]>('repos', async () => {
+  const { isFetching } = useQuery<Repository[]>('repos', async () => {
     const response = await axios.get('https://api.github.com/users/azbito/repos')
 
     setRepo(response.data)
-
     return repo
   }, {
     staleTime: 1000 * 60, // 1 minute

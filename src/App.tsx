@@ -1,29 +1,12 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import axios from 'axios';
-import { useFetch } from './hooks/useFetch';
+import { Route, Routes } from "react-router-dom";
+import { Repos } from "./pages/Repos/Repos";
+import { Repo } from "./pages/Repo/Repo";
 
-type Repository = {
-  full_name: string,
-  description: string
-}
-
-function App() {
-  const { data: repositories, isFetching: isLoading } = useFetch<Repository[]>('https://api.github.com/users/azbito/repos')
-
+export function App() {
   return (
-    <ul>
-      {isLoading && <p>Loading...</p>}
-      {repositories?.map(repo => {
-        return (
-          <li key={repo.full_name}>
-            <b>{repo.full_name}</b>
-            <p>{repo.description}</p>
-          </li>
-        )
-      })}
-    </ul>
+    <Routes>
+      <Route path="/" element={<Repos />} />
+      <Route path="/repos/*" element={<Repo />} />
+    </Routes>
   )
 }
-
-export default App;
