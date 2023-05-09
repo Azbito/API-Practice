@@ -12,25 +12,9 @@ import StarIcon from '@mui/icons-material/Star';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 // styled-compoenents
-import { StyledContainer } from '../../componentsStyle/Container.style';
-import { StyledInput } from '../../componentsStyle/Input.style';
-import { StyledButton } from '../../componentsStyle/Button.style';
-import { StyledTitle } from '../../componentsStyle/Title.style';
-import { StyledRepoMap } from '../../componentsStyle/RepoMap.style';
-import { StyledLink } from '../../componentsStyle/Link.style';
-import { StyledRepoContainer } from '../../componentsStyle/RepoContainer.style';
-import { StyledRepoName } from '../../componentsStyle/RepoName.style';
-import { StyledRepoLang } from '../../componentsStyle/RepoLang.style';
-import { StyledStargazerCounter } from '../../componentsStyle/StargazerCounter.style';
-import { StyledStargazerCount } from '../../componentsStyle/StargazerCount.style';
-import { StyledRepoDescription } from '../../componentsStyle/RepoDescription.style';
-import { StyledWarning } from '../../componentsStyle/Warning.style';
-import { StyledIcon } from '../../componentsStyle/Icon.style';
-import { StyledUserContainer } from '../../componentsStyle/UserContainer.style';
-import { StyledItalicText } from '../../componentsStyle/ItalicTitle.style';
-import { StyledThinTitle } from '../../componentsStyle/ThinTitle.style';
-import { StyledFollowersTitle } from '../../componentsStyle/FollowersTitle.style';
-import { StyledFollowContainer } from '../../componentsStyle/FollowContainer.style';
+import * as S from '../../styles/styles';
+
+// typings
 import { UserDataProps } from '../../typings/UserDataProps';
 
 type QueryResult = {
@@ -63,7 +47,6 @@ export function Repos() {
     enabled: false
   });
 
-  console.log(userInfos)
   const handleSearch = () => {
     if (name === previousNameRef.current || !name.trim()
     ) {
@@ -78,40 +61,38 @@ export function Repos() {
   }
 
   return (
-    <StyledContainer>
-      <StyledInput value={name} onChange={(e: any) => setName(e.target.value)} />
-      <StyledButton onClick={handleSearch}>Search</StyledButton>
+    <S.Container>
+      <S.Input value={name} onChange={(e: any) => setName(e.target.value)} />
+      <S.Button onClick={handleSearch}>Search</S.Button>
       {isFetching && <p>Loading...</p>}
       {userInfos &&
-        <StyledUserContainer>
-          <StyledIcon src={userInfos.avatar_url} alt={userInfos.avatar_url} />
-          <StyledTitle>{userInfos?.login}</StyledTitle>
-          <StyledThinTitle>{userInfos.name}</StyledThinTitle>
-          <StyledItalicText>{userInfos?.bio}</StyledItalicText>
-          <StyledFollowContainer>
-            <PeopleAltIcon /> <StyledFollowersTitle>Followers:</StyledFollowersTitle> <StyledThinTitle>{userInfos.followers}</StyledThinTitle> <StyledFollowersTitle>• Following:</StyledFollowersTitle> <StyledThinTitle>{userInfos.following}</StyledThinTitle>
-          </StyledFollowContainer>
-        </StyledUserContainer>
+        <S.UserContainer>
+          <S.Icon src={userInfos.avatar_url} alt={userInfos.avatar_url} />
+          <S.Title>{userInfos?.login}</S.Title>
+          <S.ThinTitle>{userInfos.name}</S.ThinTitle>
+          <S.ItalicText>{userInfos?.bio}</S.ItalicText>
+          <S.FollowContainer>
+            <PeopleAltIcon /> <S.FollowersTitle>Followers:</S.FollowersTitle> <S.ThinTitle>{userInfos.followers}</S.ThinTitle> <S.FollowersTitle>• Following:</S.FollowersTitle> <S.ThinTitle>{userInfos.following}</S.ThinTitle>
+          </S.FollowContainer>
+        </S.UserContainer>
       }
-      <StyledRepoMap>
-        {userInfos?.public_repos == 0 && <StyledWarning>This user doesn't have any repositories!</StyledWarning>}
+      <S.RepoMap>
+        {userInfos?.public_repos == 0 && <S.Warning>This user doesn't have any repositories!</S.Warning>}
         {repo?.map((item) => {
           return (
-            <>
-              <StyledLink key={item.full_name} to={`repos/${item.full_name}`}>
-                <StyledRepoContainer>
-                  <StyledRepoName>{item.name}</StyledRepoName>
-                  <StyledRepoLang>{item?.language}</StyledRepoLang>
-                  <StyledStargazerCounter>
-                    <StarIcon /> <StyledStargazerCount>{item?.stargazers_count}</StyledStargazerCount>
-                  </StyledStargazerCounter>
-                  {item.description ? <StyledRepoDescription>{item.description}</StyledRepoDescription> : <StyledRepoDescription>There's no description</StyledRepoDescription>}
-                </StyledRepoContainer>
-              </StyledLink>
-            </>
+            <S.LinkContainer key={item.full_name} to={`repos/${item.full_name}`}>
+              <S.RepoContainer>
+                <S.RepoName>{item.name}</S.RepoName>
+                <S.RepoLang>{item?.language}</S.RepoLang>
+                <S.StargazerCounter>
+                  <StarIcon /> <S.StargazerCount>{item?.stargazers_count}</S.StargazerCount>
+                </S.StargazerCounter>
+                {item.description ? <S.Description>{item.description}</S.Description> : <S.Description>There's no description</S.Description>}
+              </S.RepoContainer>
+            </S.LinkContainer>
           )
         })}
-      </StyledRepoMap>
-    </StyledContainer>
+      </S.RepoMap>
+    </S.Container>
   )
 }
